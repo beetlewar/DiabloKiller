@@ -59,7 +59,7 @@ namespace Engine
         /// <summary>
         /// Возвращает количество монет, назначаемое игроку по умолчанию
         /// </summary>
-        int DefaultHeroeCoins { get; }
+        int DefaultHeroCoins { get; }
 
         /// <summary>
         /// Возвращает стоимость оружия

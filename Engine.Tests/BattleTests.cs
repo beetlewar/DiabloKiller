@@ -24,7 +24,7 @@ namespace Engine.Tests
         }
 
         [Test]
-        public void Execute_HeroesChanceToWinLessThanMaxChance_CallsRandomizeBasedOnHeroesChance()
+        public void Execute_HeroChanceToWinLessThanMaxChance_CallsRandomizeBasedOnHeroChance()
         {
             var random = MockRepository.GenerateMock<IRandomizer>();
             random.Expect(r => r.RandomizeBool(0.3f)).Return(false);
@@ -43,7 +43,7 @@ namespace Engine.Tests
         }
 
         [Test]
-        public void Execute_HeroesChanceToWinGreaterThanMaxChance_CallsRandomizeBasedOnMaxChance()
+        public void Execute_HeroChanceToWinGreaterThanMaxChance_CallsRandomizeBasedOnMaxChance()
         {
             var random = MockRepository.GenerateMock<IRandomizer>();
             random.Expect(r => r.RandomizeBool(0.5f)).Return(false);

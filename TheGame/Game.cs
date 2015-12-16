@@ -37,7 +37,7 @@ namespace TheGame
             {
                 Console.WriteLine("Выполняется команда: {0}", cmd);
                 var result = cmd.Execute();
-                Console.WriteLine("выполнено: {0}", result);
+                Console.WriteLine("Выполнено: {0}", result);
             }
             else
             {

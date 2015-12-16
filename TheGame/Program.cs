@@ -55,7 +55,7 @@ namespace TheGame
                     catch (Exception ex)
                     {
                         Console.WriteLine();
-                        Console.WriteLine("Возника непредвиденная ошибка: {0}", ex);
+                        Console.WriteLine("Возникла непредвиденная ошибка: {0}", ex);
                     }
                 }
             }
@@ -72,7 +72,7 @@ namespace TheGame
                 Console.WriteLine("Начинается новая игра");
 
                 _game = new Game(_staticValues);
-                _game.Hero.Died += Heroe_Died;
+                _game.Hero.Died += Hero_Died;
             }
         }
 
@@ -80,12 +80,12 @@ namespace TheGame
         {
             if (_game != null)
             {
-                _game.Hero.Died -= Heroe_Died;
+                _game.Hero.Died -= Hero_Died;
                 _game = null;
             }
         }
 
-        private static void Heroe_Died(object sender, EventArgs e)
+        private static void Hero_Died(object sender, EventArgs e)
         {
             Console.WriteLine("Игрок умер:(");
             StopGame();

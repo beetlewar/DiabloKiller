@@ -44,7 +44,7 @@ namespace Engine
             this.Health = this.StaticValues.DefaultHeroHealth;
             this.MaxHealth = this.StaticValues.DefaultHeroMaxHealth;
             this.Power = this.StaticValues.DefaultHeroPower;
-            this.Coins = this.StaticValues.DefaultHeroeCoins;
+            this.Coins = this.StaticValues.DefaultHeroCoins;
         }
 
         public void AddHealth(float health)

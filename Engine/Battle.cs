@@ -40,7 +40,7 @@ namespace Engine
                 this.Hero.TakeHealth(this.StaticValues.HealthLostAfterDefeat);
 
                 return string.Format(
-                    "Поражение:( Игрок потерял {0} здоровья при {1:p} шансе на победу", 
+                    "Поражение:( Игрок потерял {0} здоровья при {1:p0} шансе на победу", 
                     this.StaticValues.HealthLostAfterDefeat,
                     chanceToWin);
             }
@@ -52,7 +52,7 @@ namespace Engine
                 this.Hero.AddCoins(this.StaticValues.CoinsGainedAfterWin);
 
                 return string.Format(
-                    "Победа! Игрок потерял {0} здоровья, но заработал {1} монет при {2:p} шансе на победу",
+                    "Победа! Игрок потерял {0} здоровья, но заработал {1} монет при {2:p0} шансе на победу",
                     prevHealth - this.Hero.Health,
                     this.StaticValues.CoinsGainedAfterWin,
                     chanceToWin);

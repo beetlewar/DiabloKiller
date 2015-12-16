@@ -76,7 +76,7 @@ namespace TheGame
         }
 
         [ConfigurationProperty("defaultCoins", DefaultValue = 2)]
-        public int DefaultHeroeCoins
+        public int DefaultHeroCoins
         {
             get { return (int)this["defaultCoins"]; }
             set { this["defaultCoins"] = value; }

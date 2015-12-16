@@ -15,7 +15,7 @@ namespace Engine.Tests
         public void Ctor_StubStaticValues_InitializesParametersFromStaticValues()
         {
             var staticVal = MockRepository.GenerateStub<IStaticValues>();
-            staticVal.Stub(s => s.DefaultHeroeCoins).Return(3);
+            staticVal.Stub(s => s.DefaultHeroCoins).Return(3);
             staticVal.Stub(s => s.DefaultHeroHealth).Return(33.2f);
             staticVal.Stub(s => s.DefaultHeroMaxHealth).Return(55.5f);
             staticVal.Stub(s => s.DefaultHeroPower).Return(129);
@@ -83,7 +83,7 @@ namespace Engine.Tests
         public void AddCoins_SetsExpectedCoinsCount()
         {
             var staticVal = MockRepository.GenerateStub<IStaticValues>();
-            staticVal.Stub(s => s.DefaultHeroeCoins).Return(33);
+            staticVal.Stub(s => s.DefaultHeroCoins).Return(33);
 
             var h = new Hero(staticVal);
             h.AddCoins(22);
