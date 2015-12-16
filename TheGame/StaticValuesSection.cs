@@ -8,7 +8,7 @@ using Engine;
 
 namespace TheGame
 {
-    public class StaticValues : 
+    public class StaticValuesSection : 
         ConfigurationSection,
         IStaticValues
     {

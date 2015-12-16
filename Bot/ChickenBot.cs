@@ -37,7 +37,7 @@ namespace Bot
             return 
                 cmd == null ?
                 "у бота нет доступных команд на исполнение" :
-                string.Format("бот выбрал {0}", cmd);
+                string.Format("бот выбрал '{0}'", cmd);
         }
 
         private ICommand GetCurrentCommand()

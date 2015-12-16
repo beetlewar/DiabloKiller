@@ -35,7 +35,7 @@ namespace Engine
 
         public override string ToString()
         {
-            return "лечение";
+            return "Лечение";
         }
     }
 }

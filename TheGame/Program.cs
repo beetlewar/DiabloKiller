@@ -18,12 +18,12 @@ namespace TheGame
             {
                 Console.WriteLine("W - атаковать монстра");
                 Console.WriteLine("A - купить у торговца оружие");
-                Console.WriteLine("D - купить у торговца одужду");
-                Console.WriteLine("S - подлучиться у лекаря");
+                Console.WriteLine("D - купить у торговца одежду");
+                Console.WriteLine("S - подлечиться у лекаря");
                 Console.WriteLine("E - совершить автоматический ход");
                 Console.WriteLine();
 
-                _staticValues = (StaticValues)System.Configuration.ConfigurationManager.GetSection("staticValues");
+                _staticValues = (StaticValuesSection)System.Configuration.ConfigurationManager.GetSection("staticValues");
 
                 Console.WriteLine("Стоимость оружия = {0}", _staticValues.WeaponPrice);
                 Console.WriteLine("Стоимость одежды = {0}", _staticValues.ArmorPrice);
@@ -46,8 +46,6 @@ namespace TheGame
                         var key = Console.ReadKey();
                         Console.WriteLine();
                         _game.ProcessKey(key.Key);
-
-                        Console.WriteLine();
                     }
                     catch (EngineException ex)
                     {
