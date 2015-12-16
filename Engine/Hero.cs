@@ -46,9 +46,9 @@ namespace Engine
         {
             this.StaticValues = staticValues;
 
-            this.Health = this.StaticValues.DefaultHeroeHealth;
-            this.MaxHealth = this.StaticValues.DefaultHeroeMaxHealth;
-            this.Power = this.StaticValues.DefaultHeroePower;
+            this.Health = this.StaticValues.DefaultHeroHealth;
+            this.MaxHealth = this.StaticValues.DefaultHeroMaxHealth;
+            this.Power = this.StaticValues.DefaultHeroPower;
             this.Coins = this.StaticValues.DefaultHeroeCoins;
         }
 
@@ -89,6 +89,11 @@ namespace Engine
         public void IncreasePower(int power)
         {
             this.Power += power;
+        }
+
+        public void IncreaseMaxHealth(float health)
+        {
+            this.MaxHealth += health;
         }
 
         public override string ToString()

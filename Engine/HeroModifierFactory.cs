@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class HeroModifierFactory : IHeroeModifierFactory
+    public class HeroModifierFactory : IHeroModifierFactory
     {
         public IHeroModifier CreateWeapon(int power)
         {
             return new Weapon(power);
+        }
+
+        public IHeroModifier CreateArmor(int health)
+        {
+            return new Armor(health);
         }
     }
 }

@@ -6,36 +6,34 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    /// <summary>
-    /// Продавец оружия
-    /// </summary>
-    public class WeaponSeller : ACommand
+    public class ArmorSeller : ACommand
     {
-        public WeaponSeller(IHero hero, IStaticValues staticValues) :
+        public ArmorSeller(IHero hero, IStaticValues staticValues) :
             this(hero, null, staticValues, null)
         {
         }
 
-        internal WeaponSeller(
+        internal ArmorSeller(
             IHero hero, 
             IRandomizer randomizer,
             IStaticValues staticValues,
             IHeroModifierFactory modifierFactory) :
             base(hero, randomizer, staticValues, modifierFactory)
         {
+
         }
 
         public override void Execute()
         {
-            this.Hero.TakeCoins(this.StaticValues.WeaponPrice);
-            var power = this.Randimozer.RandomizeInt(this.StaticValues.WeaponMinPower, this.StaticValues.WeaponMaxPower);
-            var weapon = this.ModifierFactory.CreateWeapon(power);
-            this.Hero.AddModifier(weapon);
+            this.Hero.TakeCoins(this.StaticValues.ArmorPrice);
+            var health = this.Randimozer.RandomizeInt(this.StaticValues.ArmorMinHealth, this.StaticValues.ArmorMaxHealth);
+            var armor = this.ModifierFactory.CreateArmor(health);
+            this.Hero.AddModifier(armor);
         }
 
         public override string ToString()
         {
-            return "Покупка оружия";
+            return "Покупка одежды";
         }
     }
 }

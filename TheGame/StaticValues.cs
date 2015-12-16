@@ -55,21 +55,21 @@ namespace TheGame
         }
 
         [ConfigurationProperty("defaultHealth", DefaultValue = 100.0f)]
-        public float DefaultHeroeHealth
+        public float DefaultHeroHealth
         {
             get { return (float)this["defaultHealth"]; }
             set { this["defaultHealth"] = value; }
         }
 
         [ConfigurationProperty("defaultMaxHealth", DefaultValue = 100.0f)]
-        public float DefaultHeroeMaxHealth
+        public float DefaultHeroMaxHealth
         {
             get { return (float)this["defaultMaxHealth"]; }
             set { this["defaultMaxHealth"] = value; }
         }
 
         [ConfigurationProperty("defaultPower", DefaultValue = 1)]
-        public int DefaultHeroePower
+        public int DefaultHeroPower
         {
             get { return (int)this["defaultPower"]; }
             set { this["defaultPower"] = value; }
@@ -101,6 +101,27 @@ namespace TheGame
         {
             get { return (int)this["weaponMaxPower"]; }
             set { this["weaponMaxPower"] = value; }
+        }
+
+        [ConfigurationProperty("armorPrice", DefaultValue = 10)]
+        public int ArmorPrice
+        {
+            get { return (int)this["armorPrice"]; }
+            set { this["armorPrice"] = value; }
+        }
+
+        [ConfigurationProperty("armorMinHealth", DefaultValue = 1)]
+        public int ArmorMinHealth
+        {
+            get { return (int)this["armorMinHealth"]; }
+            set { this["armorMinHealth"] = value; }
+        }
+
+        [ConfigurationProperty("armorMaxHealth", DefaultValue = 2)]
+        public int ArmorMaxHealth
+        {
+            get { return (int)this["armorMaxHealth"]; }
+            set { this["armorMaxHealth"] = value; }
         }
     }
 }

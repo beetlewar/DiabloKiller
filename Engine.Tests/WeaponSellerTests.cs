@@ -12,7 +12,7 @@ namespace Engine.Tests
     public class WeaponSellerTests
     {
         [Test]
-        public void Ctor_NullHeroe_ThrowsArgumentNullException()
+        public void Ctor_NullHero_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() => new WeaponSeller(null, MockRepository.GenerateStub<IStaticValues>()));
         }
@@ -24,16 +24,16 @@ namespace Engine.Tests
         }
 
         [Test]
-        public void Ctor_NonNullHeroe_SetsHeroe()
+        public void Ctor_NonNullHero_SetsHero()
         {
             var h = MockRepository.GenerateStub<IHero>();
-            var s = new WeaponSeller(h, MockRepository.GenerateStub<IRandomizer>(), MockRepository.GenerateStub<IStaticValues>(), MockRepository.GenerateStub<IHeroeModifierFactory>());
+            var s = new WeaponSeller(h, MockRepository.GenerateStub<IRandomizer>(), MockRepository.GenerateStub<IStaticValues>(), MockRepository.GenerateStub<IHeroModifierFactory>());
 
             Assert.AreSame(h, s.Hero);
         }
 
         [Test]
-        public void Execute_MockHeroe_TakesExpectedCoins()
+        public void Execute_MockHero_TakesExpectedCoins()
         {
             var hero = MockRepository.GenerateMock<IHero>();
             hero.Expect(h => h.TakeCoins(22));
@@ -41,7 +41,7 @@ namespace Engine.Tests
             var staticVal = MockRepository.GenerateStub<IStaticValues>();
             staticVal.Stub(s => s.WeaponPrice).Return(22);
 
-            new WeaponSeller(hero, MockRepository.GenerateStub<IRandomizer>(), staticVal, MockRepository.GenerateStub<IHeroeModifierFactory>()).Execute();
+            new WeaponSeller(hero, MockRepository.GenerateStub<IRandomizer>(), staticVal, MockRepository.GenerateStub<IHeroModifierFactory>()).Execute();
 
             hero.VerifyAllExpectations();
         }
@@ -56,7 +56,7 @@ namespace Engine.Tests
             staticVal.Stub(s => s.WeaponMinPower).Return(3);
             staticVal.Stub(s => s.WeaponMaxPower).Return(15);
 
-            new WeaponSeller(MockRepository.GenerateStub<IHero>(), rnd, staticVal, MockRepository.GenerateStub<IHeroeModifierFactory>()).Execute();
+            new WeaponSeller(MockRepository.GenerateStub<IHero>(), rnd, staticVal, MockRepository.GenerateStub<IHeroModifierFactory>()).Execute();
 
             rnd.VerifyAllExpectations();
         }
@@ -64,7 +64,7 @@ namespace Engine.Tests
         [Test]
         public void Execute_MockModifierFactory_CreatesWeaponWithRandomizedValue()
         {
-            var fac = MockRepository.GenerateMock<IHeroeModifierFactory>();
+            var fac = MockRepository.GenerateMock<IHeroModifierFactory>();
             fac.Expect(f => f.CreateWeapon(13));
 
             var rnd = MockRepository.GenerateStub<IRandomizer>();
@@ -76,14 +76,14 @@ namespace Engine.Tests
         }
 
         [Test]
-        public void Execute_MockHeroe_AddsExpectedModifier()
+        public void Execute_MockHero_AddsExpectedModifier()
         {
             var mod = MockRepository.GenerateStub<IHeroModifier>();
 
             var hero = MockRepository.GenerateMock<IHero>();
             hero.Expect(h => h.AddModifier(mod));
 
-            var fac = MockRepository.GenerateStub<IHeroeModifierFactory>();
+            var fac = MockRepository.GenerateStub<IHeroModifierFactory>();
             fac.Stub(f => f.CreateWeapon(0)).IgnoreArguments().Return(mod);
 
             new WeaponSeller(hero, MockRepository.GenerateStub<IRandomizer>(), MockRepository.GenerateStub<IStaticValues>(), fac).Execute();

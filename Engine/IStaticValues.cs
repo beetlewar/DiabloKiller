@@ -44,17 +44,17 @@ namespace Engine
         /// <summary>
         /// Возвращает здоровье, назначаемое игроку по умолчанию
         /// </summary>
-        float DefaultHeroeHealth { get; }
+        float DefaultHeroHealth { get; }
 
         /// <summary>
         /// Возвращает максимальное здоровье, назначаемое игроку по умолчанию
         /// </summary>
-        float DefaultHeroeMaxHealth { get; }
+        float DefaultHeroMaxHealth { get; }
 
         /// <summary>
         /// Возвращает мощь, назначаемую игроку по умолчанию
         /// </summary>
-        int DefaultHeroePower { get; }
+        int DefaultHeroPower { get; }
 
         /// <summary>
         /// Возвращает количество монет, назначаемое игроку по умолчанию
@@ -75,5 +75,20 @@ namespace Engine
         /// Максимальная мощь оружия
         /// </summary>
         int WeaponMaxPower { get; }
+
+        /// <summary>
+        /// Стоимость брони
+        /// </summary>
+        int ArmorPrice { get; }
+
+        /// <summary>
+        /// Минимальное здоровье, добавляемое броней
+        /// </summary>
+        int ArmorMinHealth { get; }
+
+        /// <summary>
+        /// Максимальное здоровье, добавляемое броней
+        /// </summary>
+        int ArmorMaxHealth { get; }
     }
 }

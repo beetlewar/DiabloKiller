@@ -9,27 +9,27 @@ using Rhino.Mocks;
 namespace Engine.Tests
 {
     [TestFixture]
-    public class WeaponTests
+    public class ArmorTests
     {
         [Test]
-        public void Ctor_SpecifyPower_SetsPower()
+        public void Ctor_SpecifyHealth_SetsHealth()
         {
-            Assert.AreEqual(3, new Weapon(3).Power);
+            Assert.AreEqual(2, new Armor(2).Health);
         }
 
         [Test]
         public void Modify_NullHero_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new Weapon(2).Modify(null));
+            Assert.Throws<ArgumentNullException>(() => new Armor(44).Modify(null));
         }
 
         [Test]
         public void Modify_MockHero_IncreasesHoeroesPower()
         {
             var hero = MockRepository.GenerateMock<IHero>();
-            hero.Expect(h => h.IncreasePower(77));
+            hero.Expect(h => h.IncreaseMaxHealth(22));
 
-            new Weapon(77).Modify(hero);
+            new Armor(22).Modify(hero);
 
             hero.VerifyAllExpectations();
         }

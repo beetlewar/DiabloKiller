@@ -23,6 +23,7 @@ namespace TheGame
             {
                 {ConsoleKey.W, (ICommand)new Battle(this.Hero, this.StaticValues)},
                 {ConsoleKey.A, (ICommand)new WeaponSeller(this.Hero, this.StaticValues)},
+                {ConsoleKey.D, (ICommand)new ArmorSeller(this.Hero, this.StaticValues)},
             };
         }
 

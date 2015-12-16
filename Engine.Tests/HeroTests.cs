@@ -16,9 +16,9 @@ namespace Engine.Tests
         {
             var staticVal = MockRepository.GenerateStub<IStaticValues>();
             staticVal.Stub(s => s.DefaultHeroeCoins).Return(3);
-            staticVal.Stub(s => s.DefaultHeroeHealth).Return(33.2f);
-            staticVal.Stub(s => s.DefaultHeroeMaxHealth).Return(55.5f);
-            staticVal.Stub(s => s.DefaultHeroePower).Return(129);
+            staticVal.Stub(s => s.DefaultHeroHealth).Return(33.2f);
+            staticVal.Stub(s => s.DefaultHeroMaxHealth).Return(55.5f);
+            staticVal.Stub(s => s.DefaultHeroPower).Return(129);
 
             var h = new Hero(staticVal);
 
@@ -32,7 +32,7 @@ namespace Engine.Tests
         public void DecreaseHealthRel_SetsExpectedHealth()
         {
             var staticVal = MockRepository.GenerateStub<IStaticValues>();
-            staticVal.Stub(s => s.DefaultHeroeHealth).Return(50);
+            staticVal.Stub(s => s.DefaultHeroHealth).Return(50);
 
             var h = new Hero(staticVal);
             h.DecreaseHealthRel(0.5f);
@@ -44,7 +44,7 @@ namespace Engine.Tests
         public void DecreaseHealth_SetsExpectedHealth()
         {
             var staticVal = MockRepository.GenerateStub<IStaticValues>();
-            staticVal.Stub(s => s.DefaultHeroeHealth).Return(77);
+            staticVal.Stub(s => s.DefaultHeroHealth).Return(77);
 
             var h = new Hero(staticVal);
             h.DecreaseHealth(10);
@@ -56,7 +56,7 @@ namespace Engine.Tests
         public void DecreaseHealth_NotEnoghHealth_SetsHealthToZero()
         {
             var staticVal = MockRepository.GenerateStub<IStaticValues>();
-            staticVal.Stub(s => s.DefaultHeroeHealth).Return(30);
+            staticVal.Stub(s => s.DefaultHeroHealth).Return(30);
 
             var h = new Hero(staticVal);
             h.DecreaseHealth(40);
@@ -68,7 +68,7 @@ namespace Engine.Tests
         public void DecreaseHealth_NotEnoghHealth_RaisesDeathEvent()
         {
             var staticVal = MockRepository.GenerateStub<IStaticValues>();
-            staticVal.Stub(s => s.DefaultHeroeHealth).Return(40);
+            staticVal.Stub(s => s.DefaultHeroHealth).Return(40);
 
             var h = new Hero(staticVal);
 
@@ -146,6 +146,15 @@ namespace Engine.Tests
             h.Power = 3;
             h.IncreasePower(4);
             Assert.AreEqual(7, h.Power);
+        }
+
+        [Test]
+        public void IncreaseHealth_IncreasesHealthBySpecifiedValue()
+        {
+            var h = new Hero(MockRepository.GenerateStub<IStaticValues>());
+            h.MaxHealth = 5;
+            h.IncreaseMaxHealth(10);
+            Assert.AreEqual(15, h.MaxHealth);
         }
     }
 }
