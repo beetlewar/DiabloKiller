@@ -8,28 +8,48 @@ using Engine;
 namespace Bot
 {
     public class SimpleBot : ACommand
-    {        
-        public SimpleBot(IHero hero, IStaticValues staticValues) :
-            this(hero, null, staticValues)
-        {
-        }
+    {
+        private readonly List<IBotCommand> _commands;
 
-        internal SimpleBot(
+        public SimpleBot(
             IHero hero, 
-            IRandomizer randomizer,
-            IStaticValues staticValues) :
-            base(hero, randomizer, staticValues, null)
+            IStaticValues staticValues, 
+            IEnumerable<IBotCommand> commands) :
+            base(hero, null, staticValues, null)
         {
+            this._commands = new List<IBotCommand>(commands);
+            this._commands.Sort((x, y) => x.Order.CompareTo(y.Order));
         }
 
         public override string Execute()
         {
-            throw new NotImplementedException();
+            var cmd = this.GetCurrentCommand();
+
+            if(cmd == null)
+            {
+                throw new EngineException("Нет доступных действий");
+            }
+
+            return cmd.Execute();
         }
 
         public override string ToString()
         {
-            return "бот определяет, что делать";
+            var cmd = this.GetCurrentCommand();
+            return 
+                cmd == null ?
+                "у бота нет доступных команда на исполнение" :
+                string.Format("бот выбрал {0}", cmd);
+        }
+
+        private ICommand GetCurrentCommand()
+        {
+            var cmd = this._commands.FirstOrDefault(c => c.Availability == BotCommandAvailability.Allowed);
+            if (cmd == null)
+            {
+                cmd = this._commands.FirstOrDefault(c => c.Availability == BotCommandAvailability.NotRecommended);
+            }
+            return cmd;
         }
     }
 }

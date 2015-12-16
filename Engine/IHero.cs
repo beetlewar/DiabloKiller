@@ -19,9 +19,19 @@ namespace Engine
         int Power { get; }
 
         /// <summary>
+        /// Возвращает текущее количество монет игрока
+        /// </summary>
+        int Coins { get; }
+
+        /// <summary>
         /// Возвращает текущее здоровье игрока
         /// </summary>
         float Health { get; }
+
+        /// <summary>
+        /// Возвращает максимально возможное здоровье игрока
+        /// </summary>
+        float MaxHealth { get; }
 
         /// <summary>
         /// Добавляет здоровье, при этом текущее здоровье не превышает максимальное

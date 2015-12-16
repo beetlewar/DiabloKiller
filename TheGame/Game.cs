@@ -26,7 +26,14 @@ namespace TheGame
                 {ConsoleKey.A, (ICommand)new WeaponSeller(this.Hero, this.StaticValues)},
                 {ConsoleKey.D, (ICommand)new ArmorSeller(this.Hero, this.StaticValues)},
                 {ConsoleKey.S, (ICommand)new Healer(this.Hero, this.StaticValues)},
-                {ConsoleKey.E, (ICommand)new SimpleBot(this.Hero, this.StaticValues)},
+                {ConsoleKey.E, (ICommand)new SimpleBot(this.Hero, this.StaticValues, 
+                    new[]
+                    {
+                        (IBotCommand)new BotWeaponBuyer(this.Hero, this.StaticValues),
+                        (IBotCommand)new BotArmorBuyer(this.Hero, this.StaticValues),
+                        (IBotCommand)new BotHealer(this.Hero, this.StaticValues),
+                        (IBotCommand)new BotFighter(this.Hero, this.StaticValues),
+                    })},
             };
         }
 
