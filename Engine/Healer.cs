@@ -28,7 +28,7 @@ namespace Engine
             this.Hero.AddHealth(this.StaticValues.HealEffect);
 
             return string.Format(
-                "Забрили {0} монет, вылечили {1} здоровья", 
+                "Забрали {0} монет, вылечили {1} здоровья", 
                 this.StaticValues.HealPrice,
                 this.Hero.Health - prevHealth);
         }

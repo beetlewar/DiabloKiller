@@ -39,14 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABotCommand.cs" />
-    <Compile Include="BotArmorBuyer.cs" />
-    <Compile Include="BotCommandAvailability.cs" />
-    <Compile Include="BotFighter.cs" />
-    <Compile Include="BotHealer.cs" />
-    <Compile Include="BotWeaponBuyer.cs" />
-    <Compile Include="IBotCommand.cs" />
-    <Compile Include="SimpleBot.cs" />
+    <Compile Include="ChickenBot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

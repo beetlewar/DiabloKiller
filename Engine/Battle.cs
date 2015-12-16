@@ -8,6 +8,15 @@ namespace Engine
 {
     public class Battle : ACommand
     {
+        public static float GetChanceToWin(
+            IStaticValues staticValues,
+            IHero hero)
+        {
+            return Math.Min(
+                staticValues.BaseChanceToWin + hero.Power * staticValues.PowerEffectToWin,
+                staticValues.MaxChanceToWin);
+        }
+
         public Battle(IHero hero, IStaticValues staticValues) :
             this(hero, null, staticValues)
         {
@@ -23,9 +32,7 @@ namespace Engine
 
         public override string Execute()
         {
-            var chanceToWin = Math.Min(
-                    this.StaticValues.BaseChanceToWin + this.Hero.Power * this.StaticValues.PowerEffectToWin,
-                    this.StaticValues.MaxChanceToWin);
+            var chanceToWin = GetChanceToWin(this.StaticValues, this.Hero);
 
             if(!this.Randimozer.RandomizeBool(chanceToWin))
             {
