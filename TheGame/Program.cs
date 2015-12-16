@@ -31,6 +31,7 @@ namespace TheGame
 
                 Console.WriteLine("Стоимость оружия = {0}", _staticValues.WeaponPrice);
                 Console.WriteLine("Стоимость одежды = {0}", _staticValues.ArmorPrice);
+                Console.WriteLine("Стоимость лечения = {0}", _staticValues.HealPrice);
                 Console.WriteLine();
 
                 while (true)
