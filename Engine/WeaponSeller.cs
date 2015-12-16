@@ -13,27 +13,27 @@ namespace Engine
     {
         internal IHeroeModifierFactory ModifierFactory { get; private set; }
 
-        public WeaponSeller(IHeroe heroe, IStaticValues staticValues) :
-            this(heroe, null, staticValues, null)
+        public WeaponSeller(IHero hero, IStaticValues staticValues) :
+            this(hero, null, staticValues, null)
         {
         }
 
         internal WeaponSeller(
-            IHeroe heroe, 
+            IHero hero, 
             IRandomizer randomizer,
             IStaticValues staticValues,
             IHeroeModifierFactory modifierFactory) :
-            base(heroe, randomizer, staticValues)
+            base(hero, randomizer, staticValues)
         {
-            this.ModifierFactory = modifierFactory ?? new HeroeModifierFactory();
+            this.ModifierFactory = modifierFactory ?? new HeroModifierFactory();
         }
 
         public override void Execute()
         {
-            this.Heroe.TakeCoins(this.StaticValues.WeaponPrice);
+            this.Hero.TakeCoins(this.StaticValues.WeaponPrice);
             var power = this.Randimozer.RandomizeInt(this.StaticValues.WeaponMinPower, this.StaticValues.WeaponMaxPower);
             var weapon = this.ModifierFactory.CreateWeapon(power);
-            this.Heroe.AddModifier(weapon);
+            this.Hero.AddModifier(weapon);
         }
 
         public override string ToString()

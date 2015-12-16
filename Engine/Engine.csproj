@@ -42,11 +42,11 @@
     <Compile Include="ACommand.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="EngineException.cs" />
-    <Compile Include="Heroe.cs" />
-    <Compile Include="HeroeModifierFactory.cs" />
+    <Compile Include="Hero.cs" />
+    <Compile Include="HeroModifierFactory.cs" />
     <Compile Include="ICommand.cs" />
-    <Compile Include="IHeroe.cs" />
-    <Compile Include="IHeroeModifier.cs" />
+    <Compile Include="IHero.cs" />
+    <Compile Include="IHeroModifier.cs" />
     <Compile Include="IHeroeModifierFactory.cs" />
     <Compile Include="IRandomizer.cs" />
     <Compile Include="IStaticValues.cs" />

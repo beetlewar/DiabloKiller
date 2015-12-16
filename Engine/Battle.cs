@@ -8,35 +8,35 @@ namespace Engine
 {
     public class Battle : ACommand
     {
-        public Battle(IHeroe heroe, IStaticValues staticValues) :
-            this(heroe, null, staticValues)
+        public Battle(IHero hero, IStaticValues staticValues) :
+            this(hero, null, staticValues)
         {
         }
 
         internal Battle(
-            IHeroe heroe, 
+            IHero hero, 
             IRandomizer randomizer,
             IStaticValues staticValues) :
-            base(heroe, randomizer, staticValues)
+            base(hero, randomizer, staticValues)
         {
         }
 
         public override void Execute()
         {
             var chanceToWin = Math.Min(
-                    this.StaticValues.BaseChanceToWin + this.Heroe.Power * this.StaticValues.PowerEffectToWin,
+                    this.StaticValues.BaseChanceToWin + this.Hero.Power * this.StaticValues.PowerEffectToWin,
                     this.StaticValues.MaxChanceToWin);
 
             if(!this.Randimozer.RandomizeBool(chanceToWin))
             {
                 // игрок проиграл, отнимаем здоровье
-                this.Heroe.DecreaseHealth(this.StaticValues.HealthLostAfterDefeat);
+                this.Hero.DecreaseHealth(this.StaticValues.HealthLostAfterDefeat);
             }
             else
             {
                 // игрок выиграл, отнимаем процент здоровья и прибавляем монет
-                this.Heroe.DecreaseHealthRel(this.StaticValues.HealthLostAfterWinRel);
-                this.Heroe.AddCoins(this.StaticValues.CoinsGainedAfterWin);
+                this.Hero.DecreaseHealthRel(this.StaticValues.HealthLostAfterWinRel);
+                this.Hero.AddCoins(this.StaticValues.CoinsGainedAfterWin);
             }
         }
 

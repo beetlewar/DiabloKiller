@@ -22,7 +22,7 @@ namespace TheGame
                     {
                         Console.WriteLine("Состояние:");
                         Console.WriteLine();
-                        Console.WriteLine(_game.Heroe);
+                        Console.WriteLine(_game.Hero);
 
                         Console.WriteLine();
                         Console.WriteLine("Сделайте ход");
@@ -55,14 +55,14 @@ namespace TheGame
             StopGame();
 
             _game = new Game();
-            _game.Heroe.Died += Heroe_Died;
+            _game.Hero.Died += Heroe_Died;
         }
 
         private static void StopGame()
         {
             if (_game != null)
             {
-                _game.Heroe.Died -= Heroe_Died;
+                _game.Hero.Died -= Heroe_Died;
                 _game = null;
             }
         }

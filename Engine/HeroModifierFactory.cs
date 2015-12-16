@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class HeroeModifierFactory : IHeroeModifierFactory
+    public class HeroModifierFactory : IHeroeModifierFactory
     {
-        public IHeroeModifier CreateWeapon(int power)
+        public IHeroModifier CreateWeapon(int power)
         {
             return new Weapon(power);
         }

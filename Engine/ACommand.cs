@@ -8,25 +8,25 @@ namespace Engine
 {
     public abstract class ACommand : ICommand
     {
-        public IHeroe Heroe { get; private set; }
+        public IHero Hero { get; private set; }
         internal IRandomizer Randimozer { get; private set; }
         internal IStaticValues StaticValues { get; private set; }
 
         protected ACommand(
-            IHeroe heroe, 
+            IHero hero, 
             IRandomizer randomizer,
             IStaticValues staticValues)
         {
-            if(heroe == null)
+            if(hero == null)
             {
-                throw new ArgumentNullException("heroe");
+                throw new ArgumentNullException("hero");
             }
             if(staticValues == null)
             {
                 throw new ArgumentNullException("staticValues");
             }
 
-            this.Heroe = heroe;
+            this.Hero = hero;
             this.StaticValues = staticValues;
             this.Randimozer = randomizer ?? new SimpleRandomizer();
         }

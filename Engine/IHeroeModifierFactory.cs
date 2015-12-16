@@ -11,6 +11,6 @@ namespace Engine
         /// <summary>
         /// Создает оружие с заданной мощностью
         /// </summary>
-        IHeroeModifier CreateWeapon(int power);
+        IHeroModifier CreateWeapon(int power);
     }
 }

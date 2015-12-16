@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public interface IHeroeModifier
+    public interface IHeroModifier
     {
         /// <summary>
         /// Модифицирует характериситики игрока
         /// </summary>
-        void Modify(IHeroe heroe);
+        void Modify(IHero hero);
     }
 }

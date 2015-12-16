@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Heroe : IHeroe
+    public class Hero : IHero
     {
         public event EventHandler Died;
 
         private float _health;
-        private readonly List<IHeroeModifier> _modifiers = new List<IHeroeModifier>();
+        private readonly List<IHeroModifier> _modifiers = new List<IHeroModifier>();
 
         internal IStaticValues StaticValues { get; private set; }
-        internal IHeroeModifier[] Modifiers
+        internal IHeroModifier[] Modifiers
         {
             get { return this._modifiers.ToArray(); }
         }
@@ -42,7 +42,7 @@ namespace Engine
 
         public int Coins { get; internal set; }
 
-        public Heroe(IStaticValues staticValues)
+        public Hero(IStaticValues staticValues)
         {
             this.StaticValues = staticValues;
 
@@ -76,7 +76,7 @@ namespace Engine
             this.Coins -= count;
         }
 
-        public void AddModifier(IHeroeModifier modifier)
+        public void AddModifier(IHeroModifier modifier)
         {
             if(modifier == null)
             {

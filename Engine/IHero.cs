@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public interface IHeroe
+    public interface IHero
     {
         /// <summary>
         /// Событие, возникаемое в результате смерти игрока
@@ -51,6 +51,6 @@ namespace Engine
         /// <summary>
         /// Добавляет модификатор в список модификаторов игрока и применяет его, меняя тем самым свое состояние
         /// </summary>
-        void AddModifier(IHeroeModifier modifier);
+        void AddModifier(IHeroModifier modifier);
     }
 }

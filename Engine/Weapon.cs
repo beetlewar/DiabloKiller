@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Weapon : IHeroeModifier
+    public class Weapon : IHeroModifier
     {
         public int Power { get; private set; }
 
@@ -15,13 +15,13 @@ namespace Engine
             this.Power = power;
         }
 
-        public void Modify(IHeroe heroe)
+        public void Modify(IHero hero)
         {
-            if(heroe == null)
+            if(hero == null)
             {
-                throw new ArgumentNullException("heroe");
+                throw new ArgumentNullException("hero");
             }
-            heroe.IncreasePower(this.Power);
+            hero.IncreasePower(this.Power);
         }
     }
 }

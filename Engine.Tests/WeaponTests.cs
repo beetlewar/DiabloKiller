@@ -26,12 +26,12 @@ namespace Engine.Tests
         [Test]
         public void Modify_MockHeroe_IncreasesHoeroesPower()
         {
-            var heroe = MockRepository.GenerateMock<IHeroe>();
-            heroe.Expect(h => h.IncreasePower(77));
+            var hero = MockRepository.GenerateMock<IHero>();
+            hero.Expect(h => h.IncreasePower(77));
 
-            new Weapon(77).Modify(heroe);
+            new Weapon(77).Modify(hero);
 
-            heroe.VerifyAllExpectations();
+            hero.VerifyAllExpectations();
         }
     }
 }
