@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +17,17 @@ namespace TheGame
         {
             try
             {
+                _staticValues = (StaticValuesSection)System.Configuration.ConfigurationManager.GetSection("staticValues");
+
+                Console.WriteLine("Ctrl+C - выход из приложения");
+                Console.WriteLine();
+
                 Console.WriteLine("W - атаковать монстра");
                 Console.WriteLine("A - купить у торговца оружие");
                 Console.WriteLine("D - купить у торговца одежду");
                 Console.WriteLine("S - подлечиться у лекаря");
                 Console.WriteLine("E - совершить автоматический ход");
                 Console.WriteLine();
-
-                _staticValues = (StaticValuesSection)System.Configuration.ConfigurationManager.GetSection("staticValues");
 
                 Console.WriteLine("Стоимость оружия = {0}", _staticValues.WeaponPrice);
                 Console.WriteLine("Стоимость одежды = {0}", _staticValues.ArmorPrice);
@@ -58,6 +62,20 @@ namespace TheGame
                         Console.WriteLine("Возникла непредвиденная ошибка: {0}", ex);
                     }
                 }
+            }
+            catch(ConfigurationErrorsException ex)
+            {
+                Console.WriteLine("Ошибка конфигурирования: {0}", ex.Message);
+                Console.WriteLine();
+                Console.WriteLine("Нажмите Enter для завершения работы");
+                Console.Read();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Возникла непредвиденная ошибка: {0}", ex);
+                Console.WriteLine();
+                Console.WriteLine("Нажмите Enter для завершения работы");
+                Console.Read();
             }
             finally
             {

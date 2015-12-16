@@ -53,7 +53,7 @@ namespace Engine
 
                 return string.Format(
                     "Победа! Игрок потерял {0} здоровья, но заработал {1} монет при {2:p0} шансе на победу",
-                    prevHealth - this.Hero.Health,
+                    Math.Round(prevHealth - this.Hero.Health, 2),
                     this.StaticValues.CoinsGainedAfterWin,
                     chanceToWin);
             }
