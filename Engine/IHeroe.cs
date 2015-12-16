@@ -28,7 +28,24 @@ namespace Engine
         /// <summary>
         /// Добавляет игроку монет
         /// </summary>
-        /// <param name="count"></param>
+        /// <param name="count">Количество добавляемых монет</param>
         void AddCoins(int count);
+
+        /// <summary>
+        /// Забирает у игрока заданное количество монет. Если монет не хватает, кидает EngineException
+        /// </summary>
+        /// <param name="count">Количество забираемых монет</param>
+        void TakeCoins(int count);
+
+        /// <summary>
+        /// Увеличивает мощь на заданное значение
+        /// </summary>
+        /// <param name="power">Величина, на которую увеличивается мощь игрока</param>
+        void IncreasePower(int power);
+
+        /// <summary>
+        /// Добавляет модификатор в список модификаторов игрока и применяет его, меняя тем самым свое состояние
+        /// </summary>
+        void AddModifier(IHeroeModifier modifier);
     }
 }

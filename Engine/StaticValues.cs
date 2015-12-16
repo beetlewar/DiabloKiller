@@ -8,57 +8,30 @@ namespace Engine
 {
     public class StaticValues : IStaticValues
     {
-#warning реализовать
-        public float MaxChanceToWin
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public float MaxChanceToWin { get; set; }
 
-        public float BaseChanceToWin
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public float BaseChanceToWin { get; set; }
 
-        public float PowerEffectToWin
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public float PowerEffectToWin { get; set; }
 
-        public float HealthLostAfterDefeat
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public float HealthLostAfterDefeat { get; set; }
 
+        public float HealthLostAfterWinRel { get; set; }
 
-        public float HealthLostAfterWinRel
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public int CoinsGainedAfterWin { get; set; }
 
-        public int CoinsGainedAfterWin
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public float DefaultHeroeHealth { get; set; }
 
+        public float DefaultHeroeMaxHealth { get; set; }
 
-        public float DefaultHeroeHealth
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public int DefaultHeroePower { get; set; }
 
-        public float DefaultHeroeMaxHealth
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public int DefaultHeroeCoins { get; set; }
 
-        public int DefaultHeroePower
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public int WeaponPrice { get; set; }
 
-        public int DefaultHeroeCoins
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public int WeaponMinPower { get; set; }
+
+        public int WeaponMaxPower { get; set; }
     }
 }

@@ -90,5 +90,62 @@ namespace Engine.Tests
 
             Assert.AreEqual(55, h.Coins);
         }
+
+        [Test]
+        public void AddModifier_NullModifier_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => new Heroe(MockRepository.GenerateStub<IStaticValues>()).AddModifier(null));
+        }
+
+        [Test]
+        public void AddModifier_AddsModifierToTheCollection()
+        {
+            var modifier = MockRepository.GenerateStub<IHeroeModifier>();
+
+            var h = new Heroe(MockRepository.GenerateStub<IStaticValues>());
+            h.AddModifier(modifier);
+
+            Assert.AreEqual(1, h.Modifiers.Length);
+            Assert.AreSame(modifier, h.Modifiers.Single());
+        }
+
+        [Test]
+        public void AddModifier_MockModifier_CallsModifyToModifier()
+        {
+            var h = new Heroe(MockRepository.GenerateStub<IStaticValues>());
+
+            var modifier = MockRepository.GenerateMock<IHeroeModifier>();
+            modifier.Expect(m => m.Modify(h));
+
+            h.AddModifier(modifier);
+
+            modifier.VerifyAllExpectations();
+        }
+
+        [Test]
+        public void TakeCoins_EnoughCoins_SubstructsCoins()
+        {
+            var h = new Heroe(MockRepository.GenerateStub<IStaticValues>());
+            h.Coins = 5;
+            h.TakeCoins(3);
+            Assert.AreEqual(2, h.Coins);
+        }
+
+        [Test]
+        public void TakeCoins_NotEnoughCoins_ThrowsEngineException()
+        {
+            var h = new Heroe(MockRepository.GenerateStub<IStaticValues>());
+            h.Coins = 3;
+            Assert.Throws<EngineException>(() => h.TakeCoins(4));
+        }
+
+        [Test]
+        public void IncreasePower_IncreasesPowerBySpecifiedValue()
+        {
+            var h = new Heroe(MockRepository.GenerateStub<IStaticValues>());
+            h.Power = 3;
+            h.IncreasePower(4);
+            Assert.AreEqual(7, h.Power);
+        }
     }
 }

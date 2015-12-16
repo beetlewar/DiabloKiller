@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Battle
+    public class Battle : ACommand
     {
-        public IHeroe Heroe { get; private set; }
-        internal IRandomizer Randimozer { get; private set; }
-        internal IStaticValues StaticValues { get; private set; }
-
         public Battle(IHeroe heroe) :
             this(heroe, null, null)
         {
@@ -20,15 +16,9 @@ namespace Engine
         internal Battle(
             IHeroe heroe, 
             IRandomizer randomizer,
-            IStaticValues staticValues)
+            IStaticValues staticValues) :
+            base(heroe, randomizer, staticValues)
         {
-            if(heroe == null)
-            {
-                throw new ArgumentNullException("heroe");
-            }
-            this.Heroe = heroe;
-            this.Randimozer = randomizer ?? new SimpleRandomizer();
-            this.StaticValues = staticValues ?? new StaticValues();
         }
 
         public void Execute()
