@@ -23,12 +23,17 @@ namespace Engine
 
         }
 
-        public override void Execute()
+        public override string Execute()
         {
             this.Hero.TakeCoins(this.StaticValues.ArmorPrice);
             var health = this.Randimozer.RandomizeInt(this.StaticValues.ArmorMinHealth, this.StaticValues.ArmorMaxHealth);
             var armor = this.ModifierFactory.CreateArmor(health);
             this.Hero.AddModifier(armor);
+
+            return string.Format(
+                "Забрали {0} монет, добавили {1} к максимальному здоровью",
+                this.StaticValues.ArmorPrice,
+                health);
         }
 
         public override string ToString()

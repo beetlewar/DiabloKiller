@@ -19,6 +19,11 @@ namespace Engine
         int Power { get; }
 
         /// <summary>
+        /// Возвращает текущее здоровье игрока
+        /// </summary>
+        float Health { get; }
+
+        /// <summary>
         /// Добавляет здоровье, при этом текущее здоровье не превышает максимальное
         /// </summary>
         /// <param name="health">Размер добавляемого здоровья</param>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bot;
 using Engine;
 
 namespace TheGame
@@ -14,9 +15,9 @@ namespace TheGame
 
         private readonly Dictionary<ConsoleKey, ICommand> _commands;
 
-        public Game()
+        public Game(IStaticValues staticValues)
         {
-            this.StaticValues = (StaticValues)System.Configuration.ConfigurationManager.GetSection("staticValues");
+            this.StaticValues = staticValues;
             this.Hero = new Hero(this.StaticValues);
 
             this._commands = new Dictionary<ConsoleKey, ICommand>()
@@ -25,6 +26,7 @@ namespace TheGame
                 {ConsoleKey.A, (ICommand)new WeaponSeller(this.Hero, this.StaticValues)},
                 {ConsoleKey.D, (ICommand)new ArmorSeller(this.Hero, this.StaticValues)},
                 {ConsoleKey.S, (ICommand)new Healer(this.Hero, this.StaticValues)},
+                {ConsoleKey.E, (ICommand)new SimpleBot(this.Hero, this.StaticValues)},
             };
         }
 
@@ -34,7 +36,8 @@ namespace TheGame
             if (this._commands.TryGetValue(key, out cmd))
             {
                 Console.WriteLine("Выполняется команда: {0}", cmd);
-                cmd.Execute();
+                var result = cmd.Execute();
+                Console.WriteLine("выполнено: {0}", result);
             }
             else
             {

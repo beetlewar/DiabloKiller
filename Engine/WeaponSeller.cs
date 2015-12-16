@@ -25,12 +25,17 @@ namespace Engine
         {
         }
 
-        public override void Execute()
+        public override string Execute()
         {
             this.Hero.TakeCoins(this.StaticValues.WeaponPrice);
             var power = this.Randimozer.RandomizeInt(this.StaticValues.WeaponMinPower, this.StaticValues.WeaponMaxPower);
             var weapon = this.ModifierFactory.CreateWeapon(power);
             this.Hero.AddModifier(weapon);
+
+            return string.Format(
+                "Забрали {0} монет, добавили {1} мощи",
+                this.StaticValues.WeaponPrice,
+                power);
         }
 
         public override string ToString()

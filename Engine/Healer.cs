@@ -21,10 +21,16 @@ namespace Engine
         {
         }
 
-        public override void Execute()
+        public override string Execute()
         {
             this.Hero.TakeCoins(this.StaticValues.HealPrice);
+            var prevHealth = this.Hero.Health;
             this.Hero.AddHealth(this.StaticValues.HealEffect);
+
+            return string.Format(
+                "Забрили {0} монет, вылечили {1} здоровья", 
+                this.StaticValues.HealPrice,
+                this.Hero.Health - prevHealth);
         }
 
         public override string ToString()

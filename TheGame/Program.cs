@@ -10,16 +10,32 @@ namespace TheGame
     class Program
     {
         static Game _game;
+        static IStaticValues _staticValues;
 
         static void Main(string[] args)
         {
             try
             {
-                StartNewGame();
+                Console.WriteLine("W - атаковать монстра");
+                Console.WriteLine("A - купить у торговца оружие");
+                Console.WriteLine("D - купить у торговца одужду");
+                Console.WriteLine("S - подлучиться у лекаря");
+                Console.WriteLine("E - совершить автоматический ход");
+                Console.WriteLine();
+
+                _staticValues = (StaticValues)System.Configuration.ConfigurationManager.GetSection("staticValues");
+
+                Console.WriteLine("Стоимость оружия = {0}", _staticValues.WeaponPrice);
+                Console.WriteLine("Стоимость одежды = {0}", _staticValues.ArmorPrice);
+                Console.WriteLine();
+
                 while (true)
                 {
                     try
                     {
+                        StartNewGameIfRequired();
+
+                        Console.WriteLine();
                         Console.WriteLine("Состояние:");
                         Console.WriteLine();
                         Console.WriteLine(_game.Hero);
@@ -28,6 +44,7 @@ namespace TheGame
                         Console.WriteLine("Сделайте ход");
 
                         var key = Console.ReadKey();
+                        Console.WriteLine();
                         _game.ProcessKey(key.Key);
 
                         Console.WriteLine();
@@ -35,7 +52,7 @@ namespace TheGame
                     catch (EngineException ex)
                     {
                         Console.WriteLine();
-                        Console.WriteLine("Возникла ошибка на уровне движка: {0}", ex);
+                        Console.WriteLine(ex.Message);
                     }
                     catch (Exception ex)
                     {
@@ -50,12 +67,15 @@ namespace TheGame
             }
         }
 
-        private static void StartNewGame()
+        private static void StartNewGameIfRequired()
         {
-            StopGame();
+            if (_game == null)
+            {
+                Console.WriteLine("Начинается новая игра");
 
-            _game = new Game();
-            _game.Hero.Died += Heroe_Died;
+                _game = new Game(_staticValues);
+                _game.Hero.Died += Heroe_Died;
+            }
         }
 
         private static void StopGame()
@@ -69,7 +89,8 @@ namespace TheGame
 
         private static void Heroe_Died(object sender, EventArgs e)
         {
-            StartNewGame();
+            Console.WriteLine("Игрок умер:(");
+            StopGame();
         }
     }
 }

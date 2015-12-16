@@ -8,6 +8,9 @@ namespace Engine
 {
     public interface ICommand
     {
-        void Execute();
+        /// <summary>
+        /// Выполняет команду и возвращает описание выполненного действия
+        /// </summary>
+        string Execute();
     }
 }

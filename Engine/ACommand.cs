@@ -35,6 +35,6 @@ namespace Engine
             this.ModifierFactory = modifierFactory ?? new HeroModifierFactory();
         }
 
-        public abstract void Execute();
+        public abstract string Execute();
     }
 }

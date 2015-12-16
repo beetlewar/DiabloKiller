@@ -103,7 +103,7 @@ namespace TheGame
             set { this["weaponMaxPower"] = value; }
         }
 
-        [ConfigurationProperty("armorPrice", DefaultValue = 10)]
+        [ConfigurationProperty("armorPrice", DefaultValue = 5)]
         public int ArmorPrice
         {
             get { return (int)this["armorPrice"]; }
@@ -134,7 +134,7 @@ namespace TheGame
         [ConfigurationProperty("healEffect", DefaultValue = 10.0f)]
         public float HealEffect
         {
-            get { return (int)this["healEffect"]; }
+            get { return (float)this["healEffect"]; }
             set { this["healEffect"] = value; }
         }
     }
