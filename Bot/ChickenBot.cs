@@ -15,7 +15,7 @@ namespace Bot
         public ChickenBot(
             IHero hero, 
             IStaticValues staticValues) :
-            base(hero, null, staticValues, null)
+            base(hero, null, staticValues)
         {
         }
 

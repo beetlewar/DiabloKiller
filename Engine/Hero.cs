@@ -11,14 +11,8 @@ namespace Engine
         public event EventHandler Died;
 
         private float _health;
-        private readonly List<IHeroModifier> _modifiers = new List<IHeroModifier>();
 
-        internal IStaticValues StaticValues { get; private set; }
-
-        internal IHeroModifier[] Modifiers
-        {
-            get { return this._modifiers.ToArray(); }
-        }
+        public IStaticValues StaticValues { get; private set; }
 
         public float Health
         {
@@ -81,16 +75,6 @@ namespace Engine
                 throw new EngineException("Недостаточно монет");
             }
             this.Coins -= count;
-        }
-
-        public void AddModifier(IHeroModifier modifier)
-        {
-            if(modifier == null)
-            {
-                throw new ArgumentNullException("modifier");
-            }
-            this._modifiers.Add(modifier);
-            modifier.Modify(this);
         }
 
         public void IncreasePower(int power)

@@ -20,7 +20,7 @@ namespace Engine.Tests
             var staticVal = MockRepository.GenerateStub<IStaticValues>();
             staticVal.Stub(s => s.ArmorPrice).Return(18);
 
-            new ArmorSeller(hero, MockRepository.GenerateStub<IRandomizer>(), staticVal, MockRepository.GenerateStub<IHeroModifierFactory>()).Execute();
+            new ArmorSeller(hero, MockRepository.GenerateStub<IRandomizer>(), staticVal).Execute();
 
             hero.VerifyAllExpectations();
         }
@@ -34,37 +34,21 @@ namespace Engine.Tests
             staticVal.Stub(s => s.ArmorMinHealth).Return(9);
             staticVal.Stub(s => s.ArmorMaxHealth).Return(109);
 
-            new ArmorSeller(MockRepository.GenerateStub<IHero>(), rnd, staticVal, MockRepository.GenerateStub<IHeroModifierFactory>()).Execute();
+            new ArmorSeller(MockRepository.GenerateStub<IHero>(), rnd, staticVal).Execute();
 
             rnd.VerifyAllExpectations();
         }
 
         [Test]
-        public void Execute_MockModifierFactory_CreatesWeaponWithRandomizedValue()
+        public void Execute_MockHero_IncreasesHoeroesMaxHealth()
         {
-            var fac = MockRepository.GenerateMock<IHeroModifierFactory>();
-            fac.Expect(f => f.CreateArmor(221));
-
-            var rnd = MockRepository.GenerateStub<IRandomizer>();
-            rnd.Stub(r => r.RandomizeInt(0, 0)).IgnoreArguments().Return(221);
-
-            new ArmorSeller(MockRepository.GenerateStub<IHero>(), rnd, MockRepository.GenerateStub<IStaticValues>(), fac).Execute();
-
-            fac.VerifyAllExpectations();
-        }
-
-        [Test]
-        public void Execute_MockHero_AddsExpectedModifier()
-        {
-            var mod = MockRepository.GenerateStub<IHeroModifier>();
-
             var hero = MockRepository.GenerateMock<IHero>();
-            hero.Expect(h => h.AddModifier(mod));
+            hero.Expect(h => h.IncreaseMaxHealth(22));
 
-            var fac = MockRepository.GenerateStub<IHeroModifierFactory>();
-            fac.Stub(f => f.CreateArmor(0)).IgnoreArguments().Return(mod);
+            var randomizer = MockRepository.GenerateStub<IRandomizer>();
+            randomizer.Stub(r => r.RandomizeInt(0, 0)).IgnoreArguments().Return(22);
 
-            new ArmorSeller(hero, MockRepository.GenerateStub<IRandomizer>(), MockRepository.GenerateStub<IStaticValues>(), fac).Execute();
+            new ArmorSeller(hero, randomizer, MockRepository.GenerateStub<IStaticValues>()).Execute();
 
             hero.VerifyAllExpectations();
         }

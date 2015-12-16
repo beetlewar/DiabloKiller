@@ -92,37 +92,6 @@ namespace Engine.Tests
         }
 
         [Test]
-        public void AddModifier_NullModifier_ThrowsArgumentNullException()
-        {
-            Assert.Throws<ArgumentNullException>(() => new Hero(MockRepository.GenerateStub<IStaticValues>()).AddModifier(null));
-        }
-
-        [Test]
-        public void AddModifier_AddsModifierToTheCollection()
-        {
-            var modifier = MockRepository.GenerateStub<IHeroModifier>();
-
-            var h = new Hero(MockRepository.GenerateStub<IStaticValues>());
-            h.AddModifier(modifier);
-
-            Assert.AreEqual(1, h.Modifiers.Length);
-            Assert.AreSame(modifier, h.Modifiers.Single());
-        }
-
-        [Test]
-        public void AddModifier_MockModifier_CallsModifyToModifier()
-        {
-            var h = new Hero(MockRepository.GenerateStub<IStaticValues>());
-
-            var modifier = MockRepository.GenerateMock<IHeroModifier>();
-            modifier.Expect(m => m.Modify(h));
-
-            h.AddModifier(modifier);
-
-            modifier.VerifyAllExpectations();
-        }
-
-        [Test]
         public void TakeCoins_EnoughCoins_SubstructsCoins()
         {
             var h = new Hero(MockRepository.GenerateStub<IStaticValues>());

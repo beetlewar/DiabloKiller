@@ -74,10 +74,5 @@ namespace Engine
         /// </summary>
         /// <param name="health">Величина, на которую увеличивется здоровье игрока</param>
         void IncreaseMaxHealth(float health);
-
-        /// <summary>
-        /// Добавляет модификатор в список модификаторов игрока и применяет его, меняя тем самым свое состояние
-        /// </summary>
-        void AddModifier(IHeroModifier modifier);
     }
 }

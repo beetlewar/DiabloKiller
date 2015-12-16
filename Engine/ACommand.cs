@@ -11,13 +11,11 @@ namespace Engine
         public IHero Hero { get; private set; }
         public IStaticValues StaticValues { get; private set; }
         internal IRandomizer Randimozer { get; private set; }
-        internal IHeroModifierFactory ModifierFactory { get; private set; }
 
         protected ACommand(
             IHero hero, 
             IRandomizer randomizer,
-            IStaticValues staticValues,
-            IHeroModifierFactory modifierFactory)
+            IStaticValues staticValues)
         {
             if(hero == null)
             {
@@ -32,7 +30,6 @@ namespace Engine
             this.StaticValues = staticValues;
 
             this.Randimozer = randomizer ?? new SimpleRandomizer();
-            this.ModifierFactory = modifierFactory ?? new HeroModifierFactory();
         }
 
         public abstract string Execute();

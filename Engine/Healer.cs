@@ -17,7 +17,7 @@ namespace Engine
             IHero hero, 
             IRandomizer randomizer,
             IStaticValues staticValues) :
-            base(hero, randomizer, staticValues, null)
+            base(hero, randomizer, staticValues)
         {
         }
 

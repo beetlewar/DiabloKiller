@@ -9,16 +9,15 @@ namespace Engine
     public class ArmorSeller : ACommand
     {
         public ArmorSeller(IHero hero, IStaticValues staticValues) :
-            this(hero, null, staticValues, null)
+            this(hero, null, staticValues)
         {
         }
 
         internal ArmorSeller(
             IHero hero, 
             IRandomizer randomizer,
-            IStaticValues staticValues,
-            IHeroModifierFactory modifierFactory) :
-            base(hero, randomizer, staticValues, modifierFactory)
+            IStaticValues staticValues) :
+            base(hero, randomizer, staticValues)
         {
 
         }
@@ -27,8 +26,7 @@ namespace Engine
         {
             this.Hero.TakeCoins(this.StaticValues.ArmorPrice);
             var health = this.Randimozer.RandomizeInt(this.StaticValues.ArmorMinHealth, this.StaticValues.ArmorMaxHealth);
-            var armor = this.ModifierFactory.CreateArmor(health);
-            this.Hero.AddModifier(armor);
+            this.Hero.IncreaseMaxHealth(health);
 
             return string.Format(
                 "Забрали {0} монет, добавили {1} к максимальному здоровью",

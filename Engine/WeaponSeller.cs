@@ -12,16 +12,15 @@ namespace Engine
     public class WeaponSeller : ACommand
     {
         public WeaponSeller(IHero hero, IStaticValues staticValues) :
-            this(hero, null, staticValues, null)
+            this(hero, null, staticValues)
         {
         }
 
         internal WeaponSeller(
             IHero hero, 
             IRandomizer randomizer,
-            IStaticValues staticValues,
-            IHeroModifierFactory modifierFactory) :
-            base(hero, randomizer, staticValues, modifierFactory)
+            IStaticValues staticValues) :
+            base(hero, randomizer, staticValues)
         {
         }
 
@@ -29,8 +28,7 @@ namespace Engine
         {
             this.Hero.TakeCoins(this.StaticValues.WeaponPrice);
             var power = this.Randimozer.RandomizeInt(this.StaticValues.WeaponMinPower, this.StaticValues.WeaponMaxPower);
-            var weapon = this.ModifierFactory.CreateWeapon(power);
-            this.Hero.AddModifier(weapon);
+            this.Hero.IncreasePower(power);
 
             return string.Format(
                 "Забрали {0} монет, добавили {1} мощи",
