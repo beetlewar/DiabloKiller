@@ -50,6 +50,7 @@
     <Compile Include="ArmorSellerTests.cs" />
     <Compile Include="ArmorTests.cs" />
     <Compile Include="BattleTests.cs" />
+    <Compile Include="HealerTests.cs" />
     <Compile Include="HeroTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleRandomizerTests.cs" />

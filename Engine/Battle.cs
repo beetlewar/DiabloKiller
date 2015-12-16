@@ -30,12 +30,12 @@ namespace Engine
             if(!this.Randimozer.RandomizeBool(chanceToWin))
             {
                 // игрок проиграл, отнимаем здоровье
-                this.Hero.DecreaseHealth(this.StaticValues.HealthLostAfterDefeat);
+                this.Hero.TakeHealth(this.StaticValues.HealthLostAfterDefeat);
             }
             else
             {
                 // игрок выиграл, отнимаем процент здоровья и прибавляем монет
-                this.Hero.DecreaseHealthRel(this.StaticValues.HealthLostAfterWinRel);
+                this.Hero.TakeHealthRel(this.StaticValues.HealthLostAfterWinRel);
                 this.Hero.AddCoins(this.StaticValues.CoinsGainedAfterWin);
             }
         }

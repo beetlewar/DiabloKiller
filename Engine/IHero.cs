@@ -19,16 +19,22 @@ namespace Engine
         int Power { get; }
 
         /// <summary>
+        /// Добавляет здоровье, при этом текущее здоровье не превышает максимальное
+        /// </summary>
+        /// <param name="health">Размер добавляемого здоровья</param>
+        void AddHealth(float health);
+
+        /// <summary>
         /// Уменьшает здоровье на заданный процент
         /// </summary>
         /// <param name="percent">Процент от 0 до 1, на который будет уменьшено здоровье</param>
-        void DecreaseHealthRel(float percent);
+        void TakeHealthRel(float percent);
 
         /// <summary>
         /// Уменьшает здоровье на заданную величину
         /// </summary>
         /// <param name="health">Размер отнимаемого здоровья</param>
-        void DecreaseHealth(float health);
+        void TakeHealth(float health);
 
         /// <summary>
         /// Добавляет игроку монет

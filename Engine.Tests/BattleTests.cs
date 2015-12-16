@@ -65,7 +65,7 @@ namespace Engine.Tests
         public void Execute_LosesTheBattle_DecreasesHealthBySpecifiedValue()
         {
             var hero = MockRepository.GenerateMock<IHero>();
-            hero.Expect(h => h.DecreaseHealth(20.0f));
+            hero.Expect(h => h.TakeHealth(20.0f));
 
             var random = MockRepository.GenerateStub<IRandomizer>();
             random.Stub(r => r.RandomizeBool(default(float))).IgnoreArguments().Return(false);
@@ -82,7 +82,7 @@ namespace Engine.Tests
         public void Execute_WinsTheBattle_DecreasesHealthRelBySpecifiedValue()
         {
             var hero = MockRepository.GenerateMock<IHero>();
-            hero.Expect(h => h.DecreaseHealthRel(0.2f));
+            hero.Expect(h => h.TakeHealthRel(0.2f));
 
             var random = MockRepository.GenerateStub<IRandomizer>();
             random.Stub(r => r.RandomizeBool(default(float))).IgnoreArguments().Return(true);

@@ -123,5 +123,19 @@ namespace TheGame
             get { return (int)this["armorMaxHealth"]; }
             set { this["armorMaxHealth"] = value; }
         }
+
+        [ConfigurationProperty("healPrice", DefaultValue = 3)]
+        public int HealPrice
+        {
+            get { return (int)this["healPrice"]; }
+            set { this["healPrice"] = value; }
+        }
+
+        [ConfigurationProperty("healEffect", DefaultValue = 10.0f)]
+        public float HealEffect
+        {
+            get { return (int)this["healEffect"]; }
+            set { this["healEffect"] = value; }
+        }
     }
 }

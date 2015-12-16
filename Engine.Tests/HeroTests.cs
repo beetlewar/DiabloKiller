@@ -35,7 +35,7 @@ namespace Engine.Tests
             staticVal.Stub(s => s.DefaultHeroHealth).Return(50);
 
             var h = new Hero(staticVal);
-            h.DecreaseHealthRel(0.5f);
+            h.TakeHealthRel(0.5f);
 
             Assert.AreEqual(25.0f, h.Health);
         }
@@ -47,7 +47,7 @@ namespace Engine.Tests
             staticVal.Stub(s => s.DefaultHeroHealth).Return(77);
 
             var h = new Hero(staticVal);
-            h.DecreaseHealth(10);
+            h.TakeHealth(10);
 
             Assert.AreEqual(67, h.Health);
         }
@@ -59,7 +59,7 @@ namespace Engine.Tests
             staticVal.Stub(s => s.DefaultHeroHealth).Return(30);
 
             var h = new Hero(staticVal);
-            h.DecreaseHealth(40);
+            h.TakeHealth(40);
 
             Assert.AreEqual(0, h.Health);
         }
@@ -74,7 +74,7 @@ namespace Engine.Tests
 
             h.Died += (s, ea) => Assert.Pass();
 
-            h.DecreaseHealth(40);
+            h.TakeHealth(40);
 
             Assert.Fail();
         }
@@ -149,12 +149,32 @@ namespace Engine.Tests
         }
 
         [Test]
-        public void IncreaseHealth_IncreasesHealthBySpecifiedValue()
+        public void IncreaseMaxHealth_IncreasesMaxHealthBySpecifiedValue()
         {
             var h = new Hero(MockRepository.GenerateStub<IStaticValues>());
             h.MaxHealth = 5;
             h.IncreaseMaxHealth(10);
             Assert.AreEqual(15, h.MaxHealth);
+        }
+
+        [Test]
+        public void AddHealth_AddsSpecifiedHealth()
+        {
+            var h = new Hero(MockRepository.GenerateStub<IStaticValues>());
+            h.MaxHealth = 100;
+            h.Health = 33;
+            h.AddHealth(12.5f);
+            Assert.AreEqual(45.5f, h.Health);
+        }
+
+        [Test]
+        public void AddHealth_TooMuchHealth_HealthEqualMaxHealth()
+        {
+            var h = new Hero(MockRepository.GenerateStub<IStaticValues>());
+            h.MaxHealth = 100;
+            h.Health = 90;
+            h.AddHealth(20);
+            Assert.AreEqual(100, h.Health);
         }
     }
 }

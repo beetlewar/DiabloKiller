@@ -90,5 +90,15 @@ namespace Engine
         /// Максимальное здоровье, добавляемое броней
         /// </summary>
         int ArmorMaxHealth { get; }
+
+        /// <summary>
+        /// Стоимость лечения
+        /// </summary>
+        int HealPrice { get; }
+
+        /// <summary>
+        /// Величина восстанавливаемого здорьвья при лечении
+        /// </summary>
+        float HealEffect { get; }
     }
 }

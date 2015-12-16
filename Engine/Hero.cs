@@ -14,6 +14,7 @@ namespace Engine
         private readonly List<IHeroModifier> _modifiers = new List<IHeroModifier>();
 
         internal IStaticValues StaticValues { get; private set; }
+
         internal IHeroModifier[] Modifiers
         {
             get { return this._modifiers.ToArray(); }
@@ -52,12 +53,18 @@ namespace Engine
             this.Coins = this.StaticValues.DefaultHeroeCoins;
         }
 
-        public void DecreaseHealthRel(float percent)
+        public void AddHealth(float health)
+        {
+            var currentHealth = this.Health + health;
+            this.Health = Math.Min(this.MaxHealth, currentHealth);
+        }
+
+        public void TakeHealthRel(float percent)
         {
             this.Health -= (percent * this.Health);
         }
 
-        public void DecreaseHealth(float health)
+        public void TakeHealth(float health)
         {
             this.Health = Math.Max(0, this.Health - health);
         }
