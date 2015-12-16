@@ -14,15 +14,13 @@ namespace Engine.Tests
         [Test]
         public void Ctor_NullHeroe_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new Battle(null));
+            Assert.Throws<ArgumentNullException>(() => new Battle(null, MockRepository.GenerateStub<IStaticValues>()));
         }
 
         [Test]
-        public void Ctor_NonNullHeroe_StoresHeroe()
+        public void Ctor_NullStaticValues_ThrowsArgumentNullException()
         {
-            var h = MockRepository.GenerateStub<IHeroe>();
-            var b = new Battle(h);
-            Assert.AreSame(h, b.Heroe);
+            Assert.Throws<ArgumentNullException>(() => new Battle(MockRepository.GenerateStub<IHeroe>(), null));
         }
 
         [Test]

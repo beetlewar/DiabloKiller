@@ -42,11 +42,9 @@ namespace Engine
 
         public int Coins { get; internal set; }
 
-        public Heroe() : this(null) { }
-
-        internal Heroe(IStaticValues staticValues)
+        public Heroe(IStaticValues staticValues)
         {
-            this.StaticValues = staticValues ?? new StaticValues();
+            this.StaticValues = staticValues;
 
             this.Health = this.StaticValues.DefaultHeroeHealth;
             this.MaxHealth = this.StaticValues.DefaultHeroeMaxHealth;
@@ -91,6 +89,16 @@ namespace Engine
         public void IncreasePower(int power)
         {
             this.Power += power;
+        }
+
+        public override string ToString()
+        {
+            return string.Join(
+                "\n", 
+                string.Format("Здоровье = {0}", this.Health),
+                string.Format("Макс. здоровье = {0}", this.MaxHealth),
+                string.Format("Мощь = {0}", this.Power),
+                string.Format("Монеты = {0}", this.Coins));
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public abstract class ACommand
+    public abstract class ACommand : ICommand
     {
         public IHeroe Heroe { get; private set; }
         internal IRandomizer Randimozer { get; private set; }
@@ -21,9 +21,16 @@ namespace Engine
             {
                 throw new ArgumentNullException("heroe");
             }
+            if(staticValues == null)
+            {
+                throw new ArgumentNullException("staticValues");
+            }
+
             this.Heroe = heroe;
+            this.StaticValues = staticValues;
             this.Randimozer = randomizer ?? new SimpleRandomizer();
-            this.StaticValues = staticValues ?? new StaticValues();
         }
+
+        public abstract void Execute();
     }
 }

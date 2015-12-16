@@ -9,6 +9,11 @@ namespace Engine
     public interface IHeroe
     {
         /// <summary>
+        /// Событие, возникаемое в результате смерти игрока
+        /// </summary>
+        event EventHandler Died;
+
+        /// <summary>
         /// Возвращает текущую мощь игрока
         /// </summary>
         int Power { get; }

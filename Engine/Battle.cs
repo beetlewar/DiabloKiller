@@ -8,8 +8,8 @@ namespace Engine
 {
     public class Battle : ACommand
     {
-        public Battle(IHeroe heroe) :
-            this(heroe, null, null)
+        public Battle(IHeroe heroe, IStaticValues staticValues) :
+            this(heroe, null, staticValues)
         {
         }
 
@@ -21,7 +21,7 @@ namespace Engine
         {
         }
 
-        public void Execute()
+        public override void Execute()
         {
             var chanceToWin = Math.Min(
                     this.StaticValues.BaseChanceToWin + this.Heroe.Power * this.StaticValues.PowerEffectToWin,
@@ -38,6 +38,11 @@ namespace Engine
                 this.Heroe.DecreaseHealthRel(this.StaticValues.HealthLostAfterWinRel);
                 this.Heroe.AddCoins(this.StaticValues.CoinsGainedAfterWin);
             }
+        }
+
+        public override string ToString()
+        {
+            return "Сражение с монстром";
         }
     }
 }
