@@ -91,7 +91,7 @@ namespace Engine
         {
             return string.Join(
                 "\n", 
-                string.Format("Здоровье = {0}", this.Health),
+                string.Format("Здоровье = {0}", Math.Round(this.Health, 2)),
                 string.Format("Макс. здоровье = {0}", this.MaxHealth),
                 string.Format("Мощь = {0}", this.Power),
                 string.Format("Монеты = {0}", this.Coins));
